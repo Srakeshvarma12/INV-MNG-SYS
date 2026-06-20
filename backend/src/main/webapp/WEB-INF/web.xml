@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/web-app"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/web-app https://jakarta.ee/xml/ns/web-app/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Inventory Management System API</display-name>
+
+    <!-- 1. CORS Filter Configuration -->
+    <filter>
+        <filter-name>CORSFilter</filter-name>
+        <filter-class>com.inventory.filters.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORSFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 2. Auth Filter Configuration -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.inventory.filters.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 3. Servlet Declarations -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/api/auth/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/api/auth/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/api/products/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.CategoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/api/categories/*</url-pattern>
+        <url-pattern>/api/categories</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SupplierServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.SupplierServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SupplierServlet</servlet-name>
+        <url-pattern>/api/suppliers/*</url-pattern>
+        <url-pattern>/api/suppliers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>StockServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.StockServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StockServlet</servlet-name>
+        <url-pattern>/api/stock/*</url-pattern>
+        <url-pattern>/api/stock</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.inventory.servlets.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/api/users/*</url-pattern>
+        <url-pattern>/api/users</url-pattern>
+    </servlet-mapping>
+
+    <!-- Session configuration: 30 minutes timeout -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>false</secure> <!-- set false for localhost HTTP testing -->
+            <path>/</path>
+        </cookie-config>
+    </session-config>
+
+</web-app>

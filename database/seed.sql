@@ -11,8 +11,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 -- 1. Seed Users (passwords are 'Admin@123' and 'Staff@123' respectively)
 INSERT INTO users (id, username, password, full_name, role) VALUES
-(1, 'admin', '$2b$10$9OTVur.eiBx/QwU7.1eqiO18KbfHn59KWs4Biv.iZMlNJIfOTRmci', 'System Administrator', 'ADMIN'),
-(2, 'staff', '$2b$10$BTPn1pdKob7dA1Dp38uTwOBf/lyDMNmDPZliyq5LmWZZtYE.1uSYS', 'Inventory Staff', 'STAFF');
+(1, 'admin', '$2a$10$9OTVur.eiBx/QwU7.1eqiO18KbfHn59KWs4Biv.iZMlNJIfOTRmci', 'System Administrator', 'ADMIN'),
+(2, 'staff', '$2a$10$BTPn1pdKob7dA1Dp38uTwOBf/lyDMNmDPZliyq5LmWZZtYE.1uSYS', 'Inventory Staff', 'STAFF');
 
 -- 2. Seed Categories
 INSERT INTO categories (id, name, description) VALUES
